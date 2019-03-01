@@ -2,24 +2,52 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+const pad = (n) => (n < 10)? `0${n}` : n;
+
 class App extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      t: 0,
+    }
+    this.timer = null;
+  }
+
+  componentDidMount() {
+    this.timer = setInterval(() => {
+      this.setState((prevState) => ({
+        t: prevState.t + 1,
+      }))
+    }, 1000);
+  }
+
+  componentWillMount() {
+    clearInterval(this.timer);
+  }
+
+  toggleFullScreen() {
+    if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen();
+    } else {
+      if (document.exitFullscreen) {
+        document.exitFullscreen(); 
+      }
+    }
+  }
+
   render() {
+    const { t } = this.state;
+    const second = t % 60;
+    const minute = parseInt((t - second) / 60);
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <div
+          className="clock"
+          onClick={() => this.toggleFullScreen()}
+        >
+          {pad(minute)}:{pad(second)}
+        </div>
       </div>
     );
   }

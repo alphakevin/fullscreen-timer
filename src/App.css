@@ -31,3 +31,26 @@
     transform: rotate(360deg);
   }
 }
+
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: #000;
+}
+
+@font-face {
+  font-family: "DS-Digital";
+  src: url("/ds-digit.ttf");
+}
+
+.clock {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 30vw;
+  color: white;
+  font-family: Geneva, Tahoma, sans-serif;
+}
