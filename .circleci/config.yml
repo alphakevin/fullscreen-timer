@@ -5,6 +5,9 @@
 version: 2
 jobs:
   build:
+    filters:
+      branches:
+        only: master
     docker:
       # specify the version you desire here
       - image: circleci/node:8
@@ -38,12 +41,22 @@ jobs:
           name: Build
           command: yarn build
           
+  deploy:
+  
+    filters:
+      branches:
+        only: master
+        
+    requires:
+      - test
+      - docs-build
+      
+    steps:
       - run:
           name: Config git
           command: |
             git config user.email "get.so.smart@gmail.com"
             git config user.name "alphakevin"
-            
       - run:
           name: Deploy
           command: yarn deploy
