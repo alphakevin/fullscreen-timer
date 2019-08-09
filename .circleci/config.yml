@@ -34,5 +34,16 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       # deploy to docker hub
-      - run: yarn build
-      - run: yarn deploy
+      - run:
+          name: Build
+          command: yarn build
+          
+      - run:
+          name: Config git
+          command: |
+            git config user.email "get.so.smart@gmail.com"
+            git config user.name "alphakevin"
+            
+      - run:
+          name: Deploy
+          command: yarn deploy
