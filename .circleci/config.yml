@@ -33,5 +33,6 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
-      # run tests!
+      # deploy to docker hub
+      - run: yarn build
       - run: yarn deploy
