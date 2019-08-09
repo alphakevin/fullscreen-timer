@@ -1,13 +1,9 @@
-# Javascript Node CircleCI 2.0 configuration file
-#
-# Check https://circleci.com/docs/2.0/language-javascript/ for more details
-#
 version: 2
 jobs:
   build:
-    filters:
-      branches:
-        only: master
+    branches:
+      only:
+        - master
     docker:
       # specify the version you desire here
       - image: circleci/node:8
@@ -29,34 +25,25 @@ jobs:
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
 
-      - run: yarn
+      - run:
+          name: Install dependencies
+          command: yarn
 
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-
-      # deploy to docker hub
+          
       - run:
           name: Build
           command: yarn build
           
-  deploy:
-  
-    filters:
-      branches:
-        only: master
-        
-    requires:
-      - test
-      - docs-build
-      
-    steps:
       - run:
           name: Config git
           command: |
             git config user.email "get.so.smart@gmail.com"
             git config user.name "alphakevin"
+            
       - run:
           name: Deploy
           command: yarn deploy
