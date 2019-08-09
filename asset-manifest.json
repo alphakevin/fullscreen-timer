@@ -1,13 +1,13 @@
 {
-  "main.css": "/fullscreen-timer/static/css/main.8e12a155.chunk.css",
-  "main.js": "/fullscreen-timer/static/js/main.e803e364.chunk.js",
-  "main.js.map": "/fullscreen-timer/static/js/main.e803e364.chunk.js.map",
+  "main.css": "/fullscreen-timer/static/css/main.60d873f4.chunk.css",
+  "main.js": "/fullscreen-timer/static/js/main.da4d1f09.chunk.js",
+  "main.js.map": "/fullscreen-timer/static/js/main.da4d1f09.chunk.js.map",
   "runtime~main.js": "/fullscreen-timer/static/js/runtime~main.eabb17bc.js",
   "runtime~main.js.map": "/fullscreen-timer/static/js/runtime~main.eabb17bc.js.map",
-  "static/js/2.cea528bd.chunk.js": "/fullscreen-timer/static/js/2.cea528bd.chunk.js",
-  "static/js/2.cea528bd.chunk.js.map": "/fullscreen-timer/static/js/2.cea528bd.chunk.js.map",
+  "static/js/2.8a8cd1dc.chunk.js": "/fullscreen-timer/static/js/2.8a8cd1dc.chunk.js",
+  "static/js/2.8a8cd1dc.chunk.js.map": "/fullscreen-timer/static/js/2.8a8cd1dc.chunk.js.map",
   "index.html": "/fullscreen-timer/index.html",
-  "precache-manifest.b7e10842b07eb3991f2392197af0cda5.js": "/fullscreen-timer/precache-manifest.b7e10842b07eb3991f2392197af0cda5.js",
+  "precache-manifest.d8e1170d828631e101870ea4dde3401f.js": "/fullscreen-timer/precache-manifest.d8e1170d828631e101870ea4dde3401f.js",
   "service-worker.js": "/fullscreen-timer/service-worker.js",
-  "static/css/main.8e12a155.chunk.css.map": "/fullscreen-timer/static/css/main.8e12a155.chunk.css.map"
+  "static/css/main.60d873f4.chunk.css.map": "/fullscreen-timer/static/css/main.60d873f4.chunk.css.map"
 }
