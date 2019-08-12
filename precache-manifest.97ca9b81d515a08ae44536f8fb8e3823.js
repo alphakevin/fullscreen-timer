@@ -4,19 +4,19 @@ self.__precacheManifest = [
     "url": "/fullscreen-timer/static/js/runtime~main.eabb17bc.js"
   },
   {
-    "revision": "da4d1f091970a21fba3b",
-    "url": "/fullscreen-timer/static/js/main.da4d1f09.chunk.js"
+    "revision": "a622070846836e31f1a1",
+    "url": "/fullscreen-timer/static/js/main.a6220708.chunk.js"
   },
   {
     "revision": "8a8cd1dc674c7720e55f",
     "url": "/fullscreen-timer/static/js/2.8a8cd1dc.chunk.js"
   },
   {
-    "revision": "da4d1f091970a21fba3b",
-    "url": "/fullscreen-timer/static/css/main.60d873f4.chunk.css"
+    "revision": "a622070846836e31f1a1",
+    "url": "/fullscreen-timer/static/css/main.96843c06.chunk.css"
   },
   {
-    "revision": "4f21ec04e4a058a482cf27a8e35ecc35",
+    "revision": "c9d1781749b5e24a21183fb288a4e8af",
     "url": "/fullscreen-timer/index.html"
   }
 ];
