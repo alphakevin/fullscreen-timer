@@ -73,4 +73,12 @@ body {
   border: 2px solid #333;
   border-radius: 4px;
   padding: 0 4px;
+  cursor: pointer;
+  margin-right: 4px;
+}
+.tips .tip {
+  margin-left: 4px;
+}
+.tips .tip a {
+  cursor: pointer;
 }

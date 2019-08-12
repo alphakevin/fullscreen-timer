@@ -12,7 +12,7 @@ class App extends Component {
     this.state = {
       t: 0,
       paused: true,
-      countdown: false,
+      mode: 'stopwatch',
       fullscreen: false,
       adjusting: false,
       editing: null, // minute, second, null
@@ -34,13 +34,13 @@ class App extends Component {
   }
 
   tick() {
-    const { countdown, paused, showCursor, editing } = this.state;
+    const { mode, paused, showCursor, editing } = this.state;
     if (editing) {
       this.setState({ showCursor: !showCursor });
     }
     if (paused) return;
     this.setState((prevState) => {
-      const t = prevState.t + (countdown ? -1 : 1) * 0.5;
+      const t = prevState.t + (mode === 'countdown' ? -1 : 1) * 0.5;
       if (t <= 0) {
         return {
           t: 0,
@@ -54,7 +54,7 @@ class App extends Component {
     });
   }
 
-  toggleFullScreen() {
+  toggleFullScreen = () => {
     const { fullscreen } = this.state;
     if (!fullscreen) {
       document.documentElement.requestFullscreen();
@@ -66,27 +66,27 @@ class App extends Component {
     this.setState({ fullscreen: !fullscreen });
   }
 
-  resetTimer() {
+  resetTimer = () => {
     this.setState({
       t: 0,
       paused: true
     });
   }
 
-  switchMode() {
+  switchMode = (mode) => {
     this.setState({
-      countdown: !this.state.countdown
+      mode: mode || (this.state.mode === 'stopwatch' ? 'countdown' : 'stopwatch'),
     })
   }
 
-  pauseTimer() {
+  pauseTimer = () => {
     this.setState({
       paused: !this.state.paused,
       editing: false,
     })
   }
 
-  toggleEditing() {
+  toggleEditing = () => {
     const { editing } = this.state;
     this.setState({
       editing: editing ? null : 'second',
@@ -151,7 +151,7 @@ class App extends Component {
   }
 
   render() {
-    const { t, paused, editing, countdown, showCursor, fullscreen } = this.state;
+    const { t, paused, editing, mode, showCursor, fullscreen } = this.state;
     const second = parseInt(t % 60);
     const minute = parseInt((t - second) / 60);
     return (
@@ -165,11 +165,38 @@ class App extends Component {
           <span className={clsx('time second', { editing: editing === 'second' })}>{pad(second)}</span>
         </div>
         <ul className="tips">
-          <li><kbd>F</kbd> - {fullscreen ? 'exit': 'enter'} fullscreen</li>
-          <li><kbd>←</kbd> <kbd>→</kbd> <kbd>↑</kbd> <kbd>↓</kbd> - edit timer</li>
-          <li><kbd>R</kbd> - reset timer</li>
-          <li><kbd>S</kbd> - {countdown ? <><b>countdown</b> or stopwatch</> : <>countdown or <b>stopwatch</b></>}</li>
-          <li><kbd>Space</kbd> - {paused ? 'start' : 'pause'} timer</li>
+          <li>
+            <kbd onClick={this.toggleFullScreen}>F</kbd>
+            -
+            <span className="tip">{fullscreen ? 'exit': 'enter'} fullscreen</span>
+          </li>
+          <li>
+            <kbd onClick={() => this.handleCursorMove('left')}>←</kbd>
+            <kbd onClick={() => this.handleCursorMove('right')}>→</kbd>
+            <kbd onClick={() => this.handleCursorMove('up')}>↑</kbd>
+            <kbd onClick={() => this.handleCursorMove('down')}>↓</kbd>
+            -
+            <span className="tip">edit timer</span>
+          </li>
+          <li>
+            <kbd onClick={this.resetTimer}>R</kbd>
+            -
+            <span className="tip">reset timer</span>
+          </li>
+          <li>
+            <kbd onClick={this.switchMode}>S</kbd>
+            -
+            {mode === 'countdown' ?
+              <span className="tip"><b>countdown</b> or <a onClick={() => this.switchMode('stopwatch')}>stopwatch</a></span>
+              :
+              <span className="tip"><a onClick={() => this.switchMode('countdown')}>countdown</a> or <b>stopwatch</b></span>
+            }
+          </li>
+          <li>
+            <kbd onClick={this.pauseTimer}>Space</kbd>
+            -
+            <span className="tip">{paused ? 'start' : 'pause'} timer</span>
+          </li>
         </ul>
       </div>
     );
