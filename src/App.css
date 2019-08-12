@@ -69,7 +69,12 @@ body {
 .tips li {
   text-align: left;
 }
-.tips kbd {
+.tips button {
+  background: rgba(0,0,0,0);
+  color: inherit;
+  font-size: 12px;
+}
+.tips li > button {
   border: 2px solid #333;
   border-radius: 4px;
   padding: 0 4px;
@@ -79,6 +84,9 @@ body {
 .tips .tip {
   margin-left: 4px;
 }
-.tips .tip a {
+.tips .tip > button {
+  border: none;
   cursor: pointer;
+  font-size: inherit;
+  padding: 0;
 }

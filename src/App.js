@@ -166,34 +166,34 @@ class App extends Component {
         </div>
         <ul className="tips">
           <li>
-            <kbd onClick={this.toggleFullScreen}>F</kbd>
+            <button onClick={this.toggleFullScreen}>F</button>
             -
             <span className="tip">{fullscreen ? 'exit': 'enter'} fullscreen</span>
           </li>
           <li>
-            <kbd onClick={() => this.handleCursorMove('left')}>←</kbd>
-            <kbd onClick={() => this.handleCursorMove('right')}>→</kbd>
-            <kbd onClick={() => this.handleCursorMove('up')}>↑</kbd>
-            <kbd onClick={() => this.handleCursorMove('down')}>↓</kbd>
+            <button onClick={() => this.handleCursorMove('left')}>←</button>
+            <button onClick={() => this.handleCursorMove('right')}>→</button>
+            <button onClick={() => this.handleCursorMove('up')}>↑</button>
+            <button onClick={() => this.handleCursorMove('down')}>↓</button>
             -
             <span className="tip">edit timer</span>
           </li>
           <li>
-            <kbd onClick={this.resetTimer}>R</kbd>
+            <button onClick={this.resetTimer}>R</button>
             -
             <span className="tip">reset timer</span>
           </li>
           <li>
-            <kbd onClick={this.switchMode}>S</kbd>
+            <button onClick={this.switchMode}>S</button>
             -
             {mode === 'countdown' ?
-              <span className="tip"><b>countdown</b> or <a onClick={() => this.switchMode('stopwatch')}>stopwatch</a></span>
+              <span className="tip"><span>countdown ✓</span> or <button onClick={() => this.switchMode('stopwatch')}>stopwatch</button></span>
               :
-              <span className="tip"><a onClick={() => this.switchMode('countdown')}>countdown</a> or <b>stopwatch</b></span>
+              <span className="tip"><button onClick={() => this.switchMode('countdown')}>countdown</button> or <span>stopwatch ✓</span></span>
             }
           </li>
           <li>
-            <kbd onClick={this.pauseTimer}>Space</kbd>
+            <button onClick={this.pauseTimer}>Space</button>
             -
             <span className="tip">{paused ? 'start' : 'pause'} timer</span>
           </li>
