@@ -11,6 +11,7 @@ class App extends Component {
     super(props);
     this.state = {
       t: 0,
+      tStart:  0,
       paused: true,
       mode: 'stopwatch',
       fullscreen: false,
@@ -34,7 +35,7 @@ class App extends Component {
   }
 
   tick() {
-    const { mode, paused, showCursor, editing } = this.state;
+    const { mode, paused, showCursor, editing, tStart } = this.state;
     if (editing) {
       this.setState({ showCursor: !showCursor });
     }
@@ -43,7 +44,7 @@ class App extends Component {
       const t = prevState.t + (mode === 'countdown' ? -1 : 1) * 0.5;
       if (t <= 0) {
         return {
-          t: 0,
+          t: mode === 'countdown' ? tStart : 0,
           paused: true,
         }
       } else {
@@ -67,8 +68,9 @@ class App extends Component {
   }
 
   resetTimer = () => {
+    const { mode, tStart } = this.state;
     this.setState({
-      t: 0,
+      t: mode === 'countdown' ? tStart : 0,
       paused: true
     });
   }
@@ -76,6 +78,7 @@ class App extends Component {
   switchMode = (mode) => {
     this.setState({
       mode: mode || (this.state.mode === 'stopwatch' ? 'countdown' : 'stopwatch'),
+      tStart: (mode === 'countdown' || this.state.mode === 'stopwatch') ? this.state.t : 0
     })
   }
 
@@ -116,6 +119,7 @@ class App extends Component {
       default:
         break;
     }
+    state.tStart = state.mode === 'countdown' ? state.t : 0;
     this.setState(state);
   }
 
